@@ -25,147 +25,181 @@
     <st:header name="Content-Type" value="text/html;charset=UTF-8"/>
     <j:set var="l" value="${it.container.labelProvider}"/>
     <j:if test="${it.hasAnnotations()}">
-
-        <div class="col">
-            <div id="statistics">
+        <div class="row py-3">
+            <div class="col">
                 <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${%Details}
-                            <i class="fa fa-coffee icon-right fa-2x" aria-hidden="true"/>
+                    <div class="card-block">
+
+                        <h5 class="card-title collapsed" data-toggle="collapse" role="tab"
+                            id="headingWarningDetails"
+                            data-parent="#accordion" href="#warningDetails">
+                            ${l.warnings}
                         </h5>
 
-                        <ul class="nav nav-tabs" role="tablist" id="tab-details">
-                            <j:if test="${it.container.modules.size() > 1}">
-                                <li>
-                                    <a data-toggle="tab" href="#modules1">${l.modules}</a>
-                                </li>
-                            </j:if>
-
-                            <j:if test="${it.container.packages.size() > 1}">
-                                <li class="nav-item">
-                                    <a class="nav-link active" role="tab" data-toggle="tab" href="#packages1">${l.packages}</a>
-                                </li>
-                            </j:if>
-
-                            <j:if test="${it.container.files.size() > 1}">
-                                <li class="nav-item">
-                                    <a class="nav-link" role="tab" data-toggle="tab" href="#files1">${l.files}</a>
-                                </li>
-                            </j:if>
-
-                            <j:if test="${it.useAuthors()}">
-                                <j:if test="${it.container.authors.size() > 1}">
-                                    <li class="nav-item">
-                                        <a class="nav-link" role="tab" data-toggle="tab" href="#authors1">${l.authors}</a>
-                                    </li>
-                                </j:if>
-                            </j:if>
-
-                            <j:if test="${it.container.categories.size() > 1}">
-                                <li class="nav-item">
-                                    <a class="nav-link" role="tab" data-toggle="tab" href="#categories1">${l.categories}</a>
-                                </li>
-                            </j:if>
-
-                            <j:if test="${it.container.types.size() > 1}">
-                                <li class="nav-item">
-                                    <a class="nav-link" role="tab" data-toggle="tab" href="#types1">${l.types}</a>
-                                </li>
-                            </j:if>
-
-                            <j:if test="${it.container.numberOfAnnotations > 1}">
-                                <li class="nav-item">
-                                    <a class="nav-link" role="tab" data-toggle="tab" href="#warnings1">${l.warnings}</a>
-                                </li>
-                            </j:if>
-
-                            <!--<j:if test="${it.useAuthors()}">-->
-                                <!--<li class="nav-item">-->
-                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#origin1">${l.origin}</a>-->
-                                <!--</li>-->
-                            <!--</j:if>-->
-
-                            <!--<li class="nav-item">-->
-                                <!--<a class="nav-link" role="tab" data-toggle="tab" href="#details1">${l.details}</a>-->
-                            <!--</li>-->
-
-                            <!--<j:if test="${it.newWarnings.size() > 0}">-->
-                                <!--<li class="nav-item">-->
-                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#new1">${l.new}</a>-->
-                                <!--</li>-->
-                            <!--</j:if>-->
-
-                            <!--<j:if test="${it.fixedWarnings.size() > 0}">-->
-                                <!--<li class="nav-item">-->
-                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#fixed1">${l.fixed}</a>-->
-                                <!--</li>-->
-                            <!--</j:if>-->
-
-                            <!--<j:if test="${it.container.highAnnotations.size() > 0 and it.container.highAnnotations.size() != it.container.numberOfAnnotations}">-->
-                                <!--<li class="nav-item">-->
-                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#high1">${l.high}</a>-->
-                                <!--</li>-->
-                            <!--</j:if>-->
-
-                            <!--<j:if test="${it.container.normalAnnotations.size() > 0 and it.container.normalAnnotations.size() != it.container.numberOfAnnotations}">-->
-                                <!--<li class="nav-item">-->
-                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#normal1">${l.normal}</a>-->
-                                <!--</li>-->
-                            <!--</j:if>-->
-
-                            <!--<j:if test="${it.container.lowAnnotations.size() > 0 and it.container.lowAnnotations.size() != it.container.numberOfAnnotations}">-->
-                                <!--<li class="nav-item">-->
-                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#low1">${l.low}</a>-->
-                                <!--</li>-->
-                            <!--</j:if>-->
-
-                        </ul>
-
-                        <div class="tab-content">
-                            <div role="tabpanel" id="modules1" class="tab-pane">
-                                <st:include it="${it}" page="modules.jelly"/>
-                            </div>
-                            <div role="tabpanel" id="packages1" class="tab-pane active">
-                                <st:include it="${it}" page="packages.jelly"/>
-                            </div>
-                            <div role="tabpanel" id="files1" class="tab-pane">
-                                <st:include it="${it}" page="files.jelly"/>
-                            </div>
-                            <div role="tabpanel" id="authors1" class="tab-pane">
-                                <st:include it="${it}" page="authors.jelly"/>
-                            </div>
-                            <div role="tabpanel" id="categories1" class="tab-pane">
-                                <st:include it="${it}" page="categories.jelly"/>
-                            </div>
-                            <div role="tabpanel" id="types1" class="tab-pane">
-                                <st:include it="${it}" page="types.jelly"/>
-                            </div>
-                            <div role="tabpanel" id="warnings1" class="tab-pane">
-                                <st:include it="${it}" page="warnings.jelly"/>
-                            </div>
-                            <!--<div role="tabpanel" id="origin1" class="tab-pane">-->
-                                <!--<st:include it="${it}" page="origin.jelly"/>-->
-                            <!--</div>-->
-                            <!--<div role="tabpanel" id="details1" class="tab-pane">-->
-                                <!--<st:include it="${it}" page="all.jelly"/>-->
-                            <!--</div>-->
-                            <!--<div role="tabpanel" id="new1" class="tab-pane">-->
-                                <!--<st:include it="${it}" page="new.jelly"/>-->
-                            <!--</div>-->
-                            <!--<div role="tabpanel" id="fixed1" class="tab-pane">-->
-                                <!--<st:include it="${it}" page="fixed-table.jelly"/>-->
-                            <!--</div>-->
-                            <!--<div role="tabpanel" id="high1" class="tab-pane">-->
-                                <!--<st:include it="${it}" page="high.jelly"/>-->
-                            <!--</div>-->
-                            <!--<div role="tabpanel" id="normal1" class="tab-pane">-->
-                                <!--<st:include it="${it}" page="normal.jelly"/>-->
-                            <!--</div>-->
-                            <!--<div role="tabpanel" id="low1" class="tab-pane">-->
-                                <!--<st:include it="${it}" page="low.jelly"/>-->
-                            <!--</div>-->
+                        <div id="warningDetails" class="collapse hide" role="tabpanel"
+                             aria-labelledby="headingWarningDetails">
+                            <st:include it="${it}" page="warnings.jelly"/>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="row py-3">
+            <div class="col">
+                <div id="statistics">
+                    <div class="card">
+                        <div class="card-block">
+                            <h5 class="card-title collapsed" data-toggle="collapse" role="tab"
+                                id="headingOverview" data-parent="#accordion" href="#overview">
+                                ${%Details}
+                            </h5>
+
+                            <div id="overview" class="collapse hide" role="tabpanel"
+                                 aria-labelledby="headingOverview">
+                                <ul class="nav nav-tabs" role="tablist" id="tab-details">
+                                    <j:if test="${it.container.modules.size() > 1}">
+                                        <li>
+                                            <a data-toggle="tab" href="#modules1">${l.modules}</a>
+                                        </li>
+                                    </j:if>
+
+                                    <j:if test="${it.container.packages.size() > 1}">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" role="tab" data-toggle="tab" href="#packages1">
+                                                ${l.packages}
+                                            </a>
+                                        </li>
+                                    </j:if>
+
+                                    <j:if test="${it.container.files.size() > 1}">
+                                        <li class="nav-item">
+                                            <a class="nav-link" role="tab" data-toggle="tab" href="#files1">${l.files}
+                                            </a>
+                                        </li>
+                                    </j:if>
+
+                                    <j:if test="${it.useAuthors()}">
+                                        <j:if test="${it.container.authors.size() > 1}">
+                                            <li class="nav-item">
+                                                <a class="nav-link" role="tab" data-toggle="tab" href="#authors1">
+                                                    ${l.authors}
+                                                </a>
+                                            </li>
+                                        </j:if>
+                                    </j:if>
+
+                                    <j:if test="${it.container.categories.size() > 1}">
+                                        <li class="nav-item">
+                                            <a class="nav-link" role="tab" data-toggle="tab" href="#categories1">
+                                                ${l.categories}
+                                            </a>
+                                        </li>
+                                    </j:if>
+
+                                    <j:if test="${it.container.types.size() > 1}">
+                                        <li class="nav-item">
+                                            <a class="nav-link" role="tab" data-toggle="tab" href="#types1">${l.types}
+                                            </a>
+                                        </li>
+                                    </j:if>
+
+                                    <!--<j:if test="${it.container.numberOfAnnotations > 1}">-->
+                                    <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#warnings1">-->
+                                    <!--${l.warnings}-->
+                                    <!--</a>-->
+                                    <!--</li>-->
+                                    <!--</j:if>-->
+
+                                    <!--<j:if test="${it.useAuthors()}">-->
+                                    <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#origin1">${l.origin}</a>-->
+                                    <!--</li>-->
+                                    <!--</j:if>-->
+
+                                    <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#details1">${l.details}</a>-->
+                                    <!--</li>-->
+
+                                    <!--<j:if test="${it.newWarnings.size() > 0}">-->
+                                    <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#new1">${l.new}</a>-->
+                                    <!--</li>-->
+                                    <!--</j:if>-->
+
+                                    <!--<j:if test="${it.fixedWarnings.size() > 0}">-->
+                                    <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#fixed1">${l.fixed}</a>-->
+                                    <!--</li>-->
+                                    <!--</j:if>-->
+
+                                    <!--<j:if test="${it.container.highAnnotations.size() > 0 and it.container.highAnnotations.size() != it.container.numberOfAnnotations}">-->
+                                    <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#high1">${l.high}</a>-->
+                                    <!--</li>-->
+                                    <!--</j:if>-->
+
+                                    <!--<j:if test="${it.container.normalAnnotations.size() > 0 and it.container.normalAnnotations.size() != it.container.numberOfAnnotations}">-->
+                                    <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#normal1">${l.normal}</a>-->
+                                    <!--</li>-->
+                                    <!--</j:if>-->
+
+                                    <!--<j:if test="${it.container.lowAnnotations.size() > 0 and it.container.lowAnnotations.size() != it.container.numberOfAnnotations}">-->
+                                    <!--<li class="nav-item">-->
+                                    <!--<a class="nav-link" role="tab" data-toggle="tab" href="#low1">${l.low}</a>-->
+                                    <!--</li>-->
+                                    <!--</j:if>-->
+
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div role="tabpanel" id="modules1" class="tab-pane">
+                                        <st:include it="${it}" page="modules.jelly"/>
+                                    </div>
+                                    <div role="tabpanel" id="packages1" class="tab-pane active">
+                                        <st:include it="${it}" page="packages.jelly"/>
+                                    </div>
+                                    <div role="tabpanel" id="files1" class="tab-pane">
+                                        <st:include it="${it}" page="files.jelly"/>
+                                    </div>
+                                    <div role="tabpanel" id="authors1" class="tab-pane">
+                                        <st:include it="${it}" page="authors.jelly"/>
+                                    </div>
+                                    <div role="tabpanel" id="categories1" class="tab-pane">
+                                        <st:include it="${it}" page="categories.jelly"/>
+                                    </div>
+                                    <div role="tabpanel" id="types1" class="tab-pane">
+                                        <st:include it="${it}" page="types.jelly"/>
+                                    </div>
+                                    <!--<div role="tabpanel" id="warnings1" class="tab-pane">-->
+                                    <!--<st:include it="${it}" page="warnings.jelly"/>-->
+                                    <!--</div>-->
+                                    <!--<div role="tabpanel" id="origin1" class="tab-pane">-->
+                                    <!--<st:include it="${it}" page="origin.jelly"/>-->
+                                    <!--</div>-->
+                                    <!--<div role="tabpanel" id="details1" class="tab-pane">-->
+                                    <!--<st:include it="${it}" page="all.jelly"/>-->
+                                    <!--</div>-->
+                                    <!--<div role="tabpanel" id="new1" class="tab-pane">-->
+                                    <!--<st:include it="${it}" page="new.jelly"/>-->
+                                    <!--</div>-->
+                                    <!--<div role="tabpanel" id="fixed1" class="tab-pane">-->
+                                    <!--<st:include it="${it}" page="fixed-table.jelly"/>-->
+                                    <!--</div>-->
+                                    <!--<div role="tabpanel" id="high1" class="tab-pane">-->
+                                    <!--<st:include it="${it}" page="high.jelly"/>-->
+                                    <!--</div>-->
+                                    <!--<div role="tabpanel" id="normal1" class="tab-pane">-->
+                                    <!--<st:include it="${it}" page="normal.jelly"/>-->
+                                    <!--</div>-->
+                                    <!--<div role="tabpanel" id="low1" class="tab-pane">-->
+                                    <!--<st:include it="${it}" page="low.jelly"/>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

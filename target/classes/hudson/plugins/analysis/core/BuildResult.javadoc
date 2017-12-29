@@ -1,4 +1,4 @@
-#Fri Dec 22 15:04:03 CET 2017
+#Thu Dec 28 11:58:57 CET 2017
 getPluginResult=\ Returns the {@link Result} of the plug-in.\n\n @return the plugin result\n
 getZeroWarningsHighScore=\ Returns the maximum period with zero warnings in a build.\n\n @return the time since we have zero warnings\n
 getWarningsDelta=\ Returns the delta between two builds.\n\n @return the delta\n

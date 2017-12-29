@@ -7,16 +7,14 @@
         <l:main-panel>
             <div class="fluid-container">
                 <h3>${it.header}</h3>
+                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="row py-3">
+                        <result:trend-summary/>
+                        <result:priorities-summary/>
+                    </div>
 
-                <div class="row py-3">
-                    <result:trend-summary/>
-                    <result:priorities-summary/>
-                </div>
-
-                <div class="row py-3">
                     <result:main/>
                 </div>
-
             </div>
 
         </l:main-panel>
